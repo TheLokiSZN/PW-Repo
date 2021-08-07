@@ -39,7 +39,7 @@ return null;
 }
 var passwordOptions = {
   length: length,
-  hasNumbers: hasNumbers,
+  hasNumber: hasNumber,
   hasLowercaseLetters: hasLowercaseLetters,
   hasSpecialCharacters: hasSpecialCharacters,
   hasUppercaseLetters: hasUppercaseLetters
@@ -60,6 +60,30 @@ function generatePassword() {
   if (!options) {
     return null;
   }
+  if (options.hasSpecialCharacters) {
+    possibleCharacters = possibleCharacters.concat(specialCharacters)
+    setCharacters.push(getRandom(specialCharacters))
+  }
+  if (options.hasLowercaseLetters) {
+    possibleCharacters = possibleCharacters.concat(lowercaseCharacters)
+    setCharacters.push(getRandom(lowercaseCharacters)) 
+  }
+  if (options.hasUppercaseLetters) {
+    possibleCharacters = possibleCharacters.concat(uppercaseCharacters)
+    setCharacters.push(getRandom(uppercaseCharacters))
+  }
+  if (options.hasNumber) {
+    possibleCharacters = possibleCharacters.concat(numbers)
+    setCharacters.push(getRandom(numbers))
+  }
+  for (let i = 0; i < options.length; i++) {
+    let possibleCharacter = getRandom(possibleCharacters)
+    results.push(possibleCharacter)
+  }
+  for (let i = 0; i < setCharacters.length; i++) {
+    results[i] = setCharacters[i]    
+  }
+  return results.join("")
 }
 var generateBtn = document.querySelector("#generate");
 
@@ -88,13 +112,21 @@ generateBtn.addEventListener("click", writePassword);
 //create a variable and call our function so we can use data from the previous function.
 
 // create a variable to store password
+
 //var results []
+
 // array to store the types of characters to include in our password
+
 //var userPosChars = []
+
 //array to contain at least one of each chosen type of characters to make sure at least one of every character is being used (validation)
+
 // var gaurChar = []
+
 //create conditional statements that add the array of characters into an array of possible characters based on our users input 
+
 //need to push our new random characters to the guaranteed characters (lookup .concat)
+
 //if (userOptions.specialCharacters){
   //take chars and concat
   //take characters and push(randomizationfunction(specialCharacter)) (AFTER WE RANDOMIZE)
