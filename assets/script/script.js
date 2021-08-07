@@ -44,7 +44,8 @@ var passwordOptions = {
   hasSpecialCharacters: hasSpecialCharacters,
   hasUppercaseLetters: hasUppercaseLetters
 }
-return passwordOptions; //return our passOptions
+// return our passwordOptions
+return passwordOptions; 
 //Function for getting a random element from an array
 }
 function getRandom(array) {
